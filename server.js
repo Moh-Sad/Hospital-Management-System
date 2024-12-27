@@ -15,6 +15,7 @@ import billingRoutes from './public/routes/billingRoutes.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Database Configuration
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'admin',
@@ -33,21 +34,27 @@ connection.connect((err) => {
 });
 
 const app = express();
+
+// Serve static files
 app.use(serveStatic(join(__dirname, 'public')));
 
+// Middleware for parsing JSON
 app.use(json());
 
+// Attach the database connection to requests
 app.use((req, res, next) => {
     req.db = connection;
     next();
 });
 
+// Route Handlers
 app.use('/api/auth', authRoutes);
 app.use('/api/patients', patientRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/inventory', inventoryRoutes);
-app.use('/api/billing', billingRoutes);
+app.use('/api/billing', billingRoutes); // Use billing routes under the /api/billing endpoint
 
+// Dashboard Metrics Endpoint
 app.get('/api/dashboard/metrics', (req, res) => {
     const patientQuery = 'SELECT COUNT(*) AS totalPatients FROM patients';
     const appointmentQuery = `
@@ -76,10 +83,12 @@ app.get('/api/dashboard/metrics', (req, res) => {
     });
 });
 
+// 404 Error Handler
 app.use((req, res) => {
     res.status(404).json({ error: 'Not Found' });
 });
 
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

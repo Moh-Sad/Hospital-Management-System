@@ -14,7 +14,9 @@
     <section>
         <form id="generateBillForm">
             <h2>Generate Bill</h2>
-            <input type="text" id="patientName" placeholder="Patient Name" required>
+            <select id="patientSelect" required>
+                <option value="" disabled selected>Select Patient</option>
+            </select>
             <input type="number" id="amount" placeholder="Amount" required>
             <button type="submit" class="button">Generate</button>
         </form>
@@ -25,6 +27,7 @@
                     <th>Patient</th>
                     <th>Amount</th>
                     <th>Date</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>

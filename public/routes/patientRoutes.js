@@ -3,6 +3,7 @@ import { addPatient, getPatients, deletePatient } from '../controllers/patientCo
 
 const router = express.Router();
 
+
 // Route to handle adding a new patient
 router.post('/add', addPatient);
 
