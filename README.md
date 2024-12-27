@@ -63,7 +63,7 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 ## Technologies Used
 - Node.js
 - Express.js
-- MongoDB (for database management)
+- MySQL (for database management)
 - HTML, CSS, JavaScript (for front-end)
 - RESTful API
 
