@@ -1,6 +1,3 @@
-Certainly! Below is the `README.md` content in Markdown format:
-
-```markdown
 # Hospital Management System
 
 A comprehensive web-based Hospital Management System designed to streamline administrative and clinical operations. It includes modules for authentication, patient management, appointments, inventory, and billing. This system allows efficient tracking and management of hospital resources and patient care.
