@@ -12,6 +12,7 @@
         <a href="dashboard.html" class="button">Back to Dashboard</a>
     </header>
     <section>
+        <!-- Add Appointment Form -->
         <form id="addAppointmentForm">
             <h2>Schedule Appointment</h2>
             <input type="text" id="patientName" placeholder="Patient Name" required>
@@ -19,6 +20,8 @@
             <input type="datetime-local" id="date" required>
             <button type="submit" class="button">Add Appointment</button>
         </form>
+
+        <!-- Appointments Table -->
         <h2>Appointments</h2>
         <table id="appointmentTable">
             <thead>
@@ -26,6 +29,7 @@
                     <th>Patient</th>
                     <th>Doctor</th>
                     <th>Date</th>
+                    <th>Actions</th> <!-- Add Actions column for delete -->
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +37,85 @@
             </tbody>
         </table>
     </section>
-    <script src="js/appointments.js"></script>
+
+    <script>
+        // Function to load appointments and display them in the table
+        function loadAppointments() {
+            fetch('/api/appointments')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('appointmentTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = '';  // Clear existing rows
+
+                data.appointments.forEach(appointment => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).textContent = appointment.patientName;
+                    row.insertCell(1).textContent = appointment.doctorName;
+                    row.insertCell(2).textContent = appointment.date;
+
+                    // Add delete button in the last column
+                    const deleteCell = row.insertCell(3);
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.classList.add('button');
+                    deleteButton.onclick = function () {
+                        deleteAppointment(appointment.appointmentId);
+                    };
+                    deleteCell.appendChild(deleteButton);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading appointments:', error);
+            });
+        }
+
+        // Function to handle deleting an appointment
+        function deleteAppointment(appointmentId) {
+            fetch(`/api/appointments/${appointmentId}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadAppointments();  // Refresh the appointment list after deletion
+            })
+            .catch(error => {
+                console.error('Error deleting appointment:', error);
+                alert('Error deleting appointment');
+            });
+        }
+
+        // Add Appointment Form Handling
+        const addAppointmentForm = document.getElementById('addAppointmentForm');
+
+        addAppointmentForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const patientName = document.getElementById('patientName').value;
+            const doctorName = document.getElementById('doctorName').value;
+            const date = document.getElementById('date').value;
+
+            // Send the appointment data to the backend via POST request
+            fetch('/api/appointments/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ patientName, doctorName, date })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addAppointmentForm.reset();  // Reset the form
+                loadAppointments();  // Refresh the appointment list
+            })
+            .catch(error => {
+                console.error('Error adding appointment:', error);
+                alert('Error adding appointment');
+            });
+        });
+
+        // Load the appointment list when the page loads
+        window.onload = loadAppointments;
+    </script>
+
 </body>
 </html>

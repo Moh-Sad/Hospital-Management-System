@@ -1,4 +1,4 @@
-exports.getAllBills = async (req, res) => {
+export const getAllBills = async (req, res) => {
     try {
         const [bills] = await req.db.query(`
             SELECT billing.id, patients.name AS patient_name, billing.amount, billing.created_at 
@@ -11,7 +11,7 @@ exports.getAllBills = async (req, res) => {
     }
 };
 
-exports.addBill = async (req, res) => {
+export const addBill = async (req, res) => {
     const { patient_id, amount } = req.body;
     try {
         await req.db.query('INSERT INTO billing (patient_id, amount) VALUES (?, ?)', [patient_id, amount]);
@@ -21,7 +21,7 @@ exports.addBill = async (req, res) => {
     }
 };
 
-exports.updateBill = async (req, res) => {
+export const updateBill = async (req, res) => {
     const { id } = req.params;
     const { patient_id, amount } = req.body;
     try {
@@ -32,7 +32,7 @@ exports.updateBill = async (req, res) => {
     }
 };
 
-exports.deleteBill = async (req, res) => {
+export const deleteBill = async (req, res) => {
     const { id } = req.params;
     try {
         await req.db.query('DELETE FROM billing WHERE id = ?', [id]);

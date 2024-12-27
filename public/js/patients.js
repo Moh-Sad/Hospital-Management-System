@@ -1,33 +1,48 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const patientTableBody = document.querySelector('#patientTable tbody');
+// Function to load patients and display them in the table
+function loadPatients() {
+    fetch('/api/patients')
+    .then(response => response.json())
+    .then(data => {
+        const tableBody = document.getElementById('patientTable').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = '';  // Clear existing rows
 
-    const patients = [
-        { name: 'John Doe', age: 35, contact: '123-456-7890' },
-        { name: 'Jane Smith', age: 29, contact: '987-654-3210' },
-    ];
+        data.patients.forEach(patient => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).textContent = patient.name;
+            row.insertCell(1).textContent = patient.age;
+            row.insertCell(2).textContent = patient.contact;
 
-    const renderPatients = () => {
-        patientTableBody.innerHTML = '';
-        patients.forEach((p) => {
-            const row = `<tr>
-                <td>${p.name}</td>
-                <td>${p.age}</td>
-                <td>${p.contact}</td>
-            </tr>`;
-            patientTableBody.innerHTML += row;
+            // Add delete button in the last column
+            const deleteCell = row.insertCell(3);
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('button');
+            deleteButton.onclick = function () {
+                deletePatient(patient.id);
+            };
+            deleteCell.appendChild(deleteButton);
         });
-    };
-
-    renderPatients();
-
-    document.getElementById('addPatientForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const age = document.getElementById('age').value;
-        const contact = document.getElementById('contact').value;
-
-        patients.push({ name, age, contact });
-        renderPatients();
-        e.target.reset();
+    })
+    .catch(error => {
+        console.error('Error loading patients:', error);
     });
-});
+}
+
+// Function to handle deleting a patient
+function deletePatient(patientId) {
+    fetch(`/api/patients/${patientId}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message || 'Patient deleted successfully!');
+        loadPatients();  // Refresh the patient list after deletion
+    })
+    .catch(error => {
+        console.error('Error deleting patient:', error);
+        alert('Error deleting patient');
+    });
+}
+
+// Load the patient list when the page loads
+window.onload = loadPatients;

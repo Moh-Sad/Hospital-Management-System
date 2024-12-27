@@ -14,8 +14,8 @@
     <section>
         <form id="addInventoryForm">
             <h2>Add Inventory Item</h2>
-            <input type="text" id="itemName" placeholder="Item Name" required>
-            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="text" id="itemName" name="item_name" placeholder="Item Name" required>
+            <input type="number" id="quantity" name="quantity" placeholder="Quantity" required>
             <button type="submit" class="button">Add Item</button>
         </form>
         <h2>Inventory List</h2>
@@ -24,6 +24,7 @@
                 <tr>
                     <th>Item</th>
                     <th>Quantity</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>

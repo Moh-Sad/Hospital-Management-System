@@ -12,6 +12,7 @@
         <a href="dashboard.html" class="button">Back to Dashboard</a>
     </header>
     <section>
+        <!-- Add Patient Form -->
         <form id="addPatientForm">
             <h2>Add Patient</h2>
             <input type="text" id="name" placeholder="Name" required>
@@ -19,6 +20,8 @@
             <input type="text" id="contact" placeholder="Contact" required>
             <button type="submit" class="button">Add Patient</button>
         </form>
+
+        <!-- Patient List -->
         <h2>Patient List</h2>
         <table id="patientTable">
             <thead>
@@ -26,6 +29,7 @@
                     <th>Name</th>
                     <th>Age</th>
                     <th>Contact</th>
+                    <th>Actions</th> <!-- Add Actions column for delete -->
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +37,84 @@
             </tbody>
         </table>
     </section>
-    <script src="js/patients.js"></script>
+
+    <script>
+        // Function to load patients and display them in the table
+        function loadPatients() {
+            fetch('/api/patients')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('patientTable').getElementsByTagName('tbody')[0];
+                tableBody.innerHTML = '';  // Clear existing rows
+
+                data.patients.forEach(patient => {
+                    const row = tableBody.insertRow();
+                    row.insertCell(0).textContent = patient.name;
+                    row.insertCell(1).textContent = patient.age;
+                    row.insertCell(2).textContent = patient.contact;
+
+                    // Add delete button in the last column
+                    const deleteCell = row.insertCell(3);
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.classList.add('button');
+                    deleteButton.onclick = function () {
+                        deletePatient(patient.id);
+                    };
+                    deleteCell.appendChild(deleteButton);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading patients:', error);
+            });
+        }
+
+        // Function to handle deleting a patient
+        function deletePatient(patientId) {
+            fetch(`/api/patients/${patientId}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadPatients();  // Refresh the patient list after deletion
+            })
+            .catch(error => {
+                console.error('Error deleting patient:', error);
+                alert('Error deleting patient');
+            });
+        }
+
+        // Add Patient Form Handling
+        const addPatientForm = document.getElementById('addPatientForm');
+
+        addPatientForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const contact = document.getElementById('contact').value;
+
+            // Send the patient data to the backend via POST request
+            fetch('/api/patients/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, age, contact })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addPatientForm.reset();  // Reset the form
+                loadPatients();  // Refresh the patient list
+            })
+            .catch(error => {
+                console.error('Error adding patient:', error);
+                alert('Error adding patient');
+            });
+        });
+
+        // Load the patient list when the page loads
+        window.onload = loadPatients;
+    </script>
 </body>
 </html>

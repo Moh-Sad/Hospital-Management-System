@@ -1,10 +1,10 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     getAllItems,
     addItem,
     updateItem,
     deleteItem
-} = require('../public/controllers/inventoryController');
+} from '../controllers/inventoryController.js';
 
 const router = express.Router();
 
@@ -13,4 +13,4 @@ router.post('/', addItem);
 router.put('/:id', updateItem);
 router.delete('/:id', deleteItem);
 
-module.exports = router;
+export default router;

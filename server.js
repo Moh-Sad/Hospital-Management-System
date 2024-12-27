@@ -1,12 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const mysql = require('mysql2'); // No need for promise-based API here
+import express from 'express';
+import pkg from 'body-parser';
+const { json } = pkg;
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { createConnection } from 'mysql2';
+import { static as serveStatic } from 'express';
+import authRoutes from './public/routes/authRoutes.js';
+import patientRoutes from './public/routes/patientRoutes.js';
+import appointmentRoutes from './public/routes/appointmentRoutes.js';
+import inventoryRoutes from './public/routes/inventoryRoutes.js';
+import billingRoutes from './public/routes/billingRoutes.js';
 
-// Load environment variables
-require('dotenv').config();
+// Get the current directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-// Database credentials
 const dbConfig = {
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'admin',
@@ -14,39 +22,25 @@ const dbConfig = {
     database: process.env.DB_NAME || 'hospital_management'
 };
 
-// Create a direct connection
-const connection = mysql.createConnection(dbConfig);
+const connection = createConnection(dbConfig);
 
-// Connect to the database
 connection.connect((err) => {
     if (err) {
         console.error('Database connection error:', err);
-        process.exit(1); 
+        process.exit(1);
     }
     console.log('Connected to the MySQL database!');
 });
 
 const app = express();
+app.use(serveStatic(join(__dirname, 'public')));
 
-// Middleware for parsing JSON bodies
-app.use(bodyParser.json());
+app.use(json());
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Attach database connection to each request
 app.use((req, res, next) => {
-    req.db = connection; // Use the single connection for all requests
+    req.db = connection;
     next();
 });
-
-/*
-// Routes (Organize routes outside the `public` folder)
-const authRoutes = require('./routes/authRoutes');
-const patientRoutes = require('./routes/patientRoutes');
-const appointmentRoutes = require('./routes/appointmentRoutes');
-const inventoryRoutes = require('./routes/inventoryRoutes');
-const billingRoutes = require('./routes/billingRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/patients', patientRoutes);
@@ -54,9 +48,6 @@ app.use('/api/appointments', appointmentRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/billing', billingRoutes);
 
-*/
-
-// Example API for Dashboard metrics
 app.get('/api/dashboard/metrics', (req, res) => {
     const patientQuery = 'SELECT COUNT(*) AS totalPatients FROM patients';
     const appointmentQuery = `
@@ -85,12 +76,10 @@ app.get('/api/dashboard/metrics', (req, res) => {
     });
 });
 
-// Error handling for undefined routes
 app.use((req, res) => {
     res.status(404).json({ error: 'Not Found' });
 });
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

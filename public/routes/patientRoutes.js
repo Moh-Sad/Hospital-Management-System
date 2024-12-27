@@ -1,22 +1,15 @@
-const express = require('express');
-const {
-    getAllPatients,
-    addPatient,
-    updatePatient,
-    deletePatient
-} = require('../controllers/patientController');
+import express from 'express';
+import { addPatient, getPatients, deletePatient } from '../controllers/patientController.js';
 
 const router = express.Router();
 
-router.get('/', getAllPatients);
-router.post('/', addPatient);
-router.put('/:id', updatePatient);
+// Route to handle adding a new patient
+router.post('/add', addPatient);
+
+// Route to get the list of all patients
+router.get('/', getPatients);
+
+// Route to handle deleting a patient by ID
 router.delete('/:id', deletePatient);
 
-router.get('/', (req, res, next) => {
-    console.log('GET /api/patients received');
-    next();
-}, getAllPatients);
-
-
-module.exports = router;
+export default router;
