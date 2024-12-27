@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Billing</h1>
+        <a href="dashboard.html" class="button">Back to Dashboard</a>
+    </header>
+    <section>
+        <form id="generateBillForm">
+            <h2>Generate Bill</h2>
+            <input type="text" id="patientName" placeholder="Patient Name" required>
+            <input type="number" id="amount" placeholder="Amount" required>
+            <button type="submit" class="button">Generate</button>
+        </form>
+        <h2>Bills</h2>
+        <table id="billingTable">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic data will be injected here -->
+            </tbody>
+        </table>
+    </section>
+    <script src="js/billing.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Inventory</h1>
+        <a href="dashboard.html" class="button">Back to Dashboard</a>
+    </header>
+    <section>
+        <form id="addInventoryForm">
+            <h2>Add Inventory Item</h2>
+            <input type="text" id="itemName" placeholder="Item Name" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <button type="submit" class="button">Add Item</button>
+        </form>
+        <h2>Inventory List</h2>
+        <table id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic data will be injected here -->
+            </tbody>
+        </table>
+    </section>
+    <script src="js/inventory.js"></script>
+</body>
+</html>

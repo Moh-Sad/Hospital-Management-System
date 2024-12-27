@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+        <nav>
+            <a href="patients.html" class="button">Patients</a>
+            <a href="appointments.html" class="button">Appointments</a>
+            <a href="inventory.html" class="button">Inventory</a>
+            <a href="billing.html" class="button">Billing</a>
+            <a href="reports.html" class="button">Reports</a>
+            <a href="login.html" class="button">Logout</a>
+        </nav>
+    </header>
+    <section class="dashboard-metrics">
+        <h2>Metrics</h2>
+        <div class="metric">
+            <h3>Total Patients</h3>
+            <p id="total-patients">Loading...</p>
+        </div>
+        <div class="metric">
+            <h3>Appointments Today</h3>
+            <p id="appointments-today">Loading...</p>
+        </div>
+    </section>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

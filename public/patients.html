@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patients</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Patients</h1>
+        <a href="dashboard.html" class="button">Back to Dashboard</a>
+    </header>
+    <section>
+        <form id="addPatientForm">
+            <h2>Add Patient</h2>
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="text" id="contact" placeholder="Contact" required>
+            <button type="submit" class="button">Add Patient</button>
+        </form>
+        <h2>Patient List</h2>
+        <table id="patientTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic data will be injected here -->
+            </tbody>
+        </table>
+    </section>
+    <script src="js/patients.js"></script>
+</body>
+</html>
