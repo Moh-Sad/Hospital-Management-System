@@ -1,3 +1,6 @@
+Certainly! Below is the `README.md` content in Markdown format:
+
+```markdown
 # Hospital Management System
 
 A comprehensive web-based Hospital Management System designed to streamline administrative and clinical operations. It includes modules for authentication, patient management, appointments, inventory, and billing. This system allows efficient tracking and management of hospital resources and patient care.
@@ -11,7 +14,7 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 
 ## Project Structure
 
-
+```
 /Hospital Management System
 ├── /routes
 │   ├── authRoutes.js           # Routes for user authentication
@@ -34,7 +37,7 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 │   ├── index.html             # Main landing page
 │
 ├── server.js                  # Main server file to start the app
-
+```
 
 ## Installation
 
