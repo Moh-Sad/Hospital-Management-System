@@ -41,20 +41,23 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 │   ├── register.html           # Registration page
 │   ├── reports.html            # Reports and analytics page
 │
+├── node_modules               # Folder containing installed dependencies required by the project
+├── package.json               # Node.js module configuration
+├── package-lock.json          # Node.js dependency tree lock file
 ├── server.js                  # Main server file to start the app
 ```
 
 ### Project Screenshots:
 
-- **index.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
+- **index.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/index.png)]
 - **appointments.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
-- **billing.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
-- **dashboard.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
-- **inventory.html**: [Screenshot Here]
-- **login.html**: [Screenshot Here]
-- **patients.html**: [Screenshot Here]
-- **register.html**: [Screenshot Here]
-- **reports.html**: [Screenshot Here]
+- **billing.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/billing.png)]
+- **dashboard.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/dashboard.png)]
+- **inventory.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/inventory.png)]
+- **login.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/login.png)]
+- **patients.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/patients.png)]
+- **register.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/register.png)]
+- **reports.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/reports.png)]
 
 ## Installation
 
@@ -73,7 +76,12 @@ A comprehensive web-based Hospital Management System designed to streamline admi
    npm install
    ```
 
-4. Start the server:
+4. Set up the database:
+
+- **Create the required MySQL database and tables according to the provided schema.**
+- **Update the database credentials in the server.js file.**
+
+5. Start the server:
    ```bash
    npm start
    ```
