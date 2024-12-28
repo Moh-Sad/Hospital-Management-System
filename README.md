@@ -49,15 +49,15 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 
 ### Project Screenshots:
 
-- **index.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/index.png)]
-- **appointments.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
-- **billing.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/billing.png)]
-- **dashboard.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/dashboard.png)]
-- **inventory.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/inventory.png)]
-- **login.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/login.png)]
-- **patients.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/patients.png)]
-- **register.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/register.png)]
-- **reports.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/reports.png)]
+- **index.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/index.png)
+- **appointments.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)
+- **billing.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/billing.png)
+- **dashboard.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/dashboard.png)
+- **inventory.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/inventory.png)
+- **login.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/login.png)
+- **patients.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/patients.png)
+- **register.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/register.png)
+- **reports.html**: ![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/reports.png)
 
 ## Installation
 
