@@ -32,9 +32,29 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 │   ├── /images                # Image assets
 │   ├── /js                    # JavaScript files for client-side logic
 │   ├── index.html             # Main landing page
+│   ├── appointments.html       # Appointment management page
+│   ├── billing.html            # Billing system page
+│   ├── dashboard.html          # Dashboard for metrics and insights
+│   ├── inventory.html          # Inventory tracking page
+│   ├── login.html              # Login page
+│   ├── patients.html           # Patient management page
+│   ├── register.html           # Registration page
+│   ├── reports.html            # Reports and analytics page
 │
 ├── server.js                  # Main server file to start the app
 ```
+
+### Project Screenshots:
+
+- **index.html**: [Screenshot Here]
+- **appointments.html**: [Screenshot Here]
+- **billing.html**: [Screenshot Here]
+- **dashboard.html**: [Screenshot Here]
+- **inventory.html**: [Screenshot Here]
+- **login.html**: [Screenshot Here]
+- **patients.html**: [Screenshot Here]
+- **register.html**: [Screenshot Here]
+- **reports.html**: [Screenshot Here]
 
 ## Installation
 
@@ -61,11 +81,23 @@ A comprehensive web-based Hospital Management System designed to streamline admi
    The application will be running on `http://localhost:3000`.
 
 ## Technologies Used
-- Node.js
-- Express.js
-- MySQL (for database management)
-- HTML, CSS, JavaScript (for front-end)
-- RESTful API
+
+### Node.js and Libraries
+- **Node.js**: JavaScript runtime environment for building scalable server-side applications.
+- **Express.js**: Web framework for handling routes and middleware.
+- **body-parser**: Middleware for parsing incoming request bodies.
+- **mysql2**: Library for connecting and querying MySQL databases.
+
+### Front-End Technologies
+- **HTML**: Structure of the web pages.
+- **CSS**: Styling and layout.
+- **JavaScript**: Client-side interactivity.
+
+### Database Management
+- **MySQL**: Relational database for storing and managing hospital data.
+
+### RESTful API
+- Implements RESTful endpoints for modular and scalable communication between the client and server.
 
 ## Contributing
 
