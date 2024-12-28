@@ -39,7 +39,7 @@ const app = express();
 app.use(serveStatic(join(__dirname, 'public')));
 
 // Middleware for parsing JSON
-app.use(json());
+app.use(express.json());
 
 // Attach the database connection to requests
 app.use((req, res, next) => {

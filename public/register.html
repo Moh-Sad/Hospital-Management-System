@@ -8,11 +8,29 @@
         body {
             font-family: sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .header a:hover {
+            background-color: #0056b3;
         }
 
         .container {
@@ -65,10 +83,10 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Manage Registeration</h1>
-        <a href="dashboard.html" class="button">Back to Dashboard</a>
-    </header>
+    <div class="header">
+        <h1>Manage Registration</h1>
+        <a href="dashboard.html">Back to Dashboard</a>
+    </div>
     <div class="container">
         <h2>Register</h2>
         <div id="errorMessage" class="error"></div>
@@ -91,45 +109,6 @@
         </form>
     </div>
 
-    <script>
-        const form = document.getElementById('registerForm');
-        const errorMessage = document.getElementById('errorMessage');
-
-        form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            errorMessage.textContent = '';
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const role = document.getElementById('role').value;
-
-            if (password.length < 8) {
-                errorMessage.textContent = "Password must be at least 8 characters.";
-                return;
-            }
-
-            fetch('/api/auth/register', { // Your registration endpoint
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ username, password, role }),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(err => {throw new Error(err.error || "Registration failed")});
-                }
-                return response.json();
-            })
-            .then(data => {
-                alert(data.message || "Registration successful!");
-                form.reset();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                errorMessage.textContent = error.message;
-            });
-        });
-    </script>
+    <script src="js/register.js"></script>
 </body>
 </html>
