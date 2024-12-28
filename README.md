@@ -46,10 +46,10 @@ A comprehensive web-based Hospital Management System designed to streamline admi
 
 ### Project Screenshots:
 
-- **index.html**: [Screenshot Here]
-- **appointments.html**: [Screenshot Here]
-- **billing.html**: [Screenshot Here]
-- **dashboard.html**: [Screenshot Here]
+- **index.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
+- **appointments.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
+- **billing.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
+- **dashboard.html**: [![Screenshot Here](https://github.com/Moh-Sad/Hospital-Management-System/blob/master/public/images/appointments.png)]
 - **inventory.html**: [Screenshot Here]
 - **login.html**: [Screenshot Here]
 - **patients.html**: [Screenshot Here]
