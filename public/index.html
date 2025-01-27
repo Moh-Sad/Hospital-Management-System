@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hospital Management System to optimize operations and improve patient care.">
     <title>Hospital Management System</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -10,17 +11,25 @@
     <header>
         <h1>Welcome to the Hospital Management System</h1>
         <nav>
-            <a href="login.html" class="button">Login</a>
+            <a href="login.html" class="button" aria-label="Login to the system">Login</a>
         </nav>
     </header>
-    <section id="about">
-        <h2>About HMS</h2>
-        <p>The HMS is designed to simplify and optimize hospital operations for better patient care and efficiency.</p>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: support@hospitalmanagement.com</p>
-        <p>Phone: +251999999999</p>
-    </section>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About HMS</h2>
+            <p>The Hospital Management System (HMS) is designed to simplify and optimize hospital operations, ensuring better patient care and operational efficiency.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Us</h2>
+            <address>
+                <p>Email: <a href="mailto:support@hospitalmanagement.com">support@hospitalmanagement.com</a></p>
+                <p>Phone: <a href="tel:+251999999999">+251 999 999 999</a></p>
+            </address>
+        </section>
+    </main>
 </body>
 </html>
